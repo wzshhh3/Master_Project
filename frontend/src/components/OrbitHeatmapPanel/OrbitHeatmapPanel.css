@@ -1,0 +1,268 @@
+/* Orbit Heatmap + GDD 双卡片容器，已由 .orbit-panel 外部撑开宽高，这里主要做内部两栏卡片布局 */
+.orbit-panel {
+  display: flex;
+  flex-direction: row;
+  gap: 34px;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+/* 左：heatmap卡片 */
+.heatmap-section {
+  background: linear-gradient(135deg, #f8fafc 80%, #e3eafe 100%);
+  border-radius: 16px;
+  padding: 24px 18px 20px 18px;
+  box-shadow: 0 6px 24px rgba(49,130,206,0.11), 0 1.5px 4px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 240px;
+  max-width: 320px;
+  flex: 1;
+}
+
+.heatmap-img, .heatmap-placeholder {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(49,130,206,0.09);
+  background: #edf2f7;
+  margin-bottom: 12px;
+  object-fit: contain;
+  transition: box-shadow 0.2s;
+}
+
+.heatmap-img:hover {
+  box-shadow: 0 4px 24px rgba(49,130,206,0.18);
+  filter: brightness(1.04);
+}
+
+.heatmap-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #90a4ae;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/* 右：GDD分布卡片 */
+.gdd-section {
+  background: linear-gradient(135deg, #f7fafc 88%, #e3f2fd 100%);
+  border-radius: 16px;
+  padding: 18px 14px 18px 14px;
+  box-shadow: 0 6px 18px rgba(49,130,206,0.09), 0 1.5px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 290px;
+  flex: 1.3;
+}
+
+/* GDD分布表格 */
+.gdd-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  max-width: 320px;
+  max-height: 180px;
+  overflow-y: auto;
+  display: block;
+  background: #f7fafc;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(49,130,206,0.04);
+  margin-bottom: 9px;
+  font-size: 14px;
+}
+
+/* 表头美化 */
+.gdd-table thead th {
+  background: #ebf8ff;
+  color: #2a4365;
+  font-size: 15px;
+  padding: 7px 8px;
+  border-bottom: 2px solid #bee3f8;
+}
+
+.gdd-table th,
+.gdd-table td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 7px 9px;
+  font-size: 13px;
+  text-align: left;
+  background: transparent;
+}
+
+.gdd-table tbody tr {
+  transition: background 0.14s;
+}
+
+.gdd-table tbody tr:nth-child(even) {
+  background: #f1f5f9;
+}
+
+.gdd-table tbody tr.selected,
+.gdd-table tbody tr:hover {
+  background: #bee3f8 !important;
+}
+
+.export-btn {
+  margin-top: 7px;
+  padding: 7px 20px;
+  background: linear-gradient(90deg,#3182ce 60%,#4fd1c5 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  box-shadow: 0 2px 8px rgba(49,130,206,0.09);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.13s;
+}
+
+.export-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg,#2563eb 30%,#38b2ac 100%);
+  box-shadow: 0 4px 18px rgba(49,130,206,0.15);
+  transform: translateY(-2px) scale(1.025);
+}
+
+.export-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.export-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #b8c7e5;
+}
+
+.gdd-section {
+  background: linear-gradient(135deg, #f7fafc 88%, #e3f2fd 100%);
+  border-radius: 16px;
+  padding: 24px 18px 24px 18px;
+  box-shadow: 0 6px 18px rgba(49,130,206,0.09), 0 1.5px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 340px;  /* ★增大 */
+  min-height: 220px;
+  flex: 1.7;
+}
+
+.gdd-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 70%;
+  max-width: 460px;   /* ★增大 */
+  max-height: 300px;  /* ★增大 */
+  overflow-y: auto;
+  display: block;
+  background: #f7fafc;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(49,130,206,0.04);
+  margin-bottom: 12px;
+  font-size: 16px;   /* ★可选，字再大点 */
+}
+
+.gdd-table th,
+.gdd-table td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 13px; /* ★更宽松 */
+  font-size: 15px;
+}
+
+
+.heatmap-section {
+  background: linear-gradient(135deg, #f7fafc 88%, #e3f2fd 100%);
+  border-radius: 16px;
+  padding: 24px 18px 24px 18px;
+  box-shadow: 0 6px 18px rgba(49,130,206,0.09), 0 1.5px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 340px;   /* 与 gdd-section 保持一致 */
+  min-height: 220px;
+  flex: 1.7;          /* 与 gdd-section 保持一致 */
+}
+
+/* 放大图片，适配增大的卡片 */
+.heatmap-img, .heatmap-placeholder {
+  width: 260px;
+  height: 260px;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(49,130,206,0.13);
+  background: #edf2f7;
+  margin-bottom: 32px;
+  object-fit: contain;
+  transition: box-shadow 0.2s;
+  display: block;
+}
+
+.heatmap-img:hover {
+  box-shadow: 0 4px 28px rgba(49,130,206,0.15);
+  filter: brightness(1.03);
+}
+
+/* 导出按钮和右侧按钮风格同步 */
+.export-btn {
+  width: 180px;
+  height: 48px;
+  font-size: 1.16rem;
+  font-weight: 600;
+  border-radius: 9px;
+  margin-top: auto;      /* 自动顶到底部 */
+  margin-bottom: 10px;   /* 保持底部适当留白 */
+  background: linear-gradient(90deg,#3182ce 65%,#38b2ac 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 10px rgba(49,130,206,0.09);
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.16s, transform 0.11s;
+  display: block;
+}
+
+.export-btn:hover {
+  background: linear-gradient(90deg,#2563eb 40%,#38b2ac 100%);
+  box-shadow: 0 6px 20px rgba(49,130,206,0.18);
+  transform: translateY(-2px) scale(1.04);
+}
+
+
+.orbit-action {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;  /* ★让子元素靠底 */
+  align-items: flex-end;      /* ★让子元素靠右 */
+  height: 100%;
+  min-width: 0;
+  padding-bottom: 24px;       /* 可选：底部适当留白 */
+  padding-right: 22px;        /* 可选：右侧适当留白 */
+}
+
+.back-btn {
+  padding: 16px 36px;
+  background: linear-gradient(90deg,#319795 20%,#3182ce 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.18rem;
+  font-weight: bold;
+  box-shadow: 0 2px 14px rgba(49,130,206,0.12);
+  cursor: pointer;
+  letter-spacing: .04em;
+  transition: background 0.18s, box-shadow 0.17s, transform 0.12s;
+}
+
+.back-btn:hover {
+  background: linear-gradient(90deg,#2563eb 40%,#319795 100%);
+  box-shadow: 0 7px 26px rgba(49,130,206,0.16);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.back-btn:active {
+  transform: scale(0.97);
+}

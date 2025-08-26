@@ -1,0 +1,29 @@
+.background {
+     position: fixed;
+  background-image: url('../../assets/images/background.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* This will disable scrolling */
+  z-index: 1;
+
+   
+}
+ 
+.text-bottom-left {
+  font-family:"Kaiti";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 1rem;
+  margin-left: 80px; /* 或根据您的设计调整 */
+  margin-bottom: 150px; /* 或根据您的设计调整 */
+  color: #ffffff; /* 文字颜色 */
+  font-size: 70px; /* 文字大小 */
+  font-family: Arial, sans-serif; /* 或您选择的字体 */
+  line-height: 1.5; /* 调整行间距 */
+  background-color: #002a78c1;
+  border-radius: 12px;
+}

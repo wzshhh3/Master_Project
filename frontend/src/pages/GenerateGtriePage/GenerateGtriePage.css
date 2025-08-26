@@ -1,0 +1,122 @@
+.gen-bg {
+  min-height: 100vh;
+  background: repeating-linear-gradient(135deg, #f6f8fa, #f6f8fa 38px, #e4eafd 39px, #e4eafd 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gen-card {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(90,110,180,0.14);
+  border: 1.5px solid #a1b6e7;
+  padding: 36px 56px 32px 56px;
+  min-width: 540px;
+  max-width: 96vw;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.gen-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.gen-row {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gen-lab {
+  font-size: 17px;
+  min-width: 180px;
+}
+
+.gen-radio {
+  font-size: 15.5px;
+  margin-right: 22px;
+  margin-left: 8px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.gen-checkbox {
+  font-size: 15.5px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.gen-k {
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1.2px solid #b1b8e4;
+  padding: 2px 7px;
+  width: 54px;
+}
+
+.gen-filename {
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1.2px solid #b1b8e4;
+  padding: 2.5px 9px;
+  margin-left: 8px;
+}
+
+.gen-upload-box {
+  margin-top: 9px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gen-upload-btn {
+  background: #314df7;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 5px 22px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.gen-upload-filename {
+  font-size: 15px;
+  color: #193189;
+}
+
+.gen-upload-error {
+  color: #d52222;
+  font-size: 14px;
+  margin-left: 12px;
+}
+
+.gen-error {
+  color: #d52222;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.gen-generate-btn {
+  padding: 8px 32px;
+  font-size: 17px;
+  background: #314df7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.gen-generate-btn:disabled {
+  background: #e1e6f0;
+  color: #888;
+  cursor: not-allowed;
+}

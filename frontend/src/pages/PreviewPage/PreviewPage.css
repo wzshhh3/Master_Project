@@ -1,0 +1,80 @@
+.preview-bg {
+  min-height: 100vh;
+  background: repeating-linear-gradient(135deg, #f6f8fa, #f6f8fa 38px, #e4eafd 39px, #e4eafd 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-card {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(90,110,180,0.14);
+  border: 1.5px solid #a1b6e7;
+  padding: 36px 56px 32px 56px;
+  min-width: 720px;
+  max-width: 96vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preview-header {
+  font-size: 20px;
+  margin-bottom: 18px;
+  width: 100%;
+  text-align: left;
+}
+
+.preview-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 18px 0 18px 0;
+}
+
+.preview-cyto-box {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-btn-group {
+  margin-top: 28px;
+  display: flex;
+  gap: 40px;
+}
+
+.preview-btn {
+  padding: 9px 34px;
+  font-size: 18px;
+  background: #314df7;
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  box-shadow: 1px 2px 0 #e7ebf9;
+  transition: background 0.2s;
+}
+
+.preview-btn.preview-cancel {
+  background: #b4b7be;
+}
+
+.preview-btn:disabled {
+  background: #e1e6f0;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.preview-error {
+  color: #d52222;
+  margin: 12px 0 0 0;
+  font-size: 16px;
+}

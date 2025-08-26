@@ -1,0 +1,151 @@
+.subgraph-panel {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #fafdff 92%, #e3f4fd 100%);
+  border-radius: 20px;
+  box-shadow: 0 7px 28px rgba(49,130,206,0.09), 0 2px 8px rgba(0,0,0,0.08);
+  padding: 24px 18px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  min-width: 220px;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.type-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 13px;
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.type-item {
+  padding: 8px 18px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #2b4360;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  box-shadow: 0 1px 6px rgba(49,130,206,0.04);
+  border: 1.5px solid transparent;
+  transition: background 0.17s, color 0.17s, border 0.15s;
+  user-select: none;
+}
+
+.type-item.selected {
+  background: linear-gradient(90deg,#2563eb 60%,#38b2ac 100%);
+  color: #fff;
+  border: 1.5px solid #3182ce;
+  box-shadow: 0 4px 16px rgba(49,130,206,0.09);
+  transform: translateY(-2px) scale(1.06);
+}
+
+/* 实例小卡片区块 */
+.inst-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 12px;
+  align-items: flex-start;
+  min-height: 120px;
+  max-height: 600px;
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+}
+
+.inst-item {
+  width: 108px;
+  background: #f8fafc;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 1.5px 8px rgba(49,130,206,0.08);
+  padding: 10px 0 7px 0;
+  border: 1.5px solid #e3e8f0;
+  transition: box-shadow 0.14s, transform 0.11s, background 0.15s;
+}
+
+.inst-item:hover,
+.inst-item:active {
+  background: #e3f2fd;
+  box-shadow: 0 3px 16px rgba(49,130,206,0.11);
+  border: 1.5px solid #38b2ac;
+  transform: translateY(-1.5px) scale(1.04);
+}
+
+.inst-info {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #2d3748;
+  opacity: 0.82;
+  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', 'Consolas', 'monospace';
+  word-break: break-all;
+  text-align: center;
+}
+
+/* 导出按钮美化 */
+.export-btn {
+  margin: 20px;
+  padding: 10px 30px;
+  background: linear-gradient(90deg,#3182ce 65%,#38b2ac 100%);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  box-shadow: 0 2.5px 10px rgba(49,130,206,0.13);
+  cursor: pointer;
+  transition: background 0.16s, box-shadow 0.15s, transform 0.09s;
+}
+
+.export-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg,#2563eb 40%,#38b2ac 100%);
+  box-shadow: 0 6px 20px rgba(49,130,206,0.18);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.export-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.export-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #b8c7e5;
+}
+
+/* 滚动条美化（右侧面板专用） */
+.inst-list::-webkit-scrollbar {
+  width: 6px;
+  background: #e3e8f0;
+  border-radius: 4px;
+}
+.inst-list::-webkit-scrollbar-thumb {
+  background: #bcd7fa;
+  border-radius: 4px;
+}
+
+
+.type-legend {
+  position: absolute;
+  left: 200px; /* 可根据实际布局微调 */
+  top: 20px;
+  z-index: 10;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 8px #0001;
+  border-radius: 10px;
+  min-width: 120px;
+}
+.subgraph-panel { position: relative; }

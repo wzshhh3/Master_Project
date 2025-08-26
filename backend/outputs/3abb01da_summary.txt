@@ -1,0 +1,56 @@
+gtrieScanner Results
+------------------------------------------
+General Information
+
+Start of Computation: 21h52m16s 31/07/2025
+End of Computation: 21h52m16s 31/07/2025
+
+Subgraph Size: 3
+Graph File: "/mnt/e/graphlet-app/backend/gt_input/insurance.txt.edges.txt"
+Directed: YES
+Nr Nodes: 27
+Nr Edges: 52
+
+Method: GTRIE with file containing complete g-trie
+Different Types of Subgraphs Found [Original Network]: 8
+Subgraph Occurrences Found [Original Network]: 228
+Time for computing census on original network: 0.006245s
+Average time for census on random network: 0.000000s
+
+Number of random networks: 0
+Random seed: 1753995136
+Exchanges per edge: 3
+Number of tries per exchange: 10
+------------------------------------------
+Motif Analysis Results
+
+Graph   Org_Freq |  Z-score |    Rnd_Avg +/-    Rnd_Dev
+
+001
+100
+000           80 |     0.00 |       0.00 +/-       0.00
+
+010
+000
+100           80 |     0.00 |       0.00 +/-       0.00
+
+000
+100
+100           23 |     0.00 |       0.00 +/-       0.00
+
+000
+100
+110            9 |     0.00 |       0.00 +/-       0.00
+
+010
+000
+110            9 |     0.00 |       0.00 +/-       0.00
+
+011
+000
+010            9 |     0.00 |       0.00 +/-       0.00
+
+011
+001
+000            9 |     0.00 |       0.00 +/-       0.00
+

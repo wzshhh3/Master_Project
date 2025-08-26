@@ -1,0 +1,78 @@
+.dashboard-root {
+  display: grid;
+  grid-template-columns: 2.4fr 1fr;
+  grid-template-rows: 2.2fr 1fr;
+  grid-template-areas:
+    "main-graph subgraph-panel"
+    "orbit-panel orbit-panel";
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #f8fbff 70%, #e6eeff 100%);
+  gap: 30px 24px;
+  padding: 30px 28px 28px 30px;
+  box-sizing: border-box;
+  min-width: 1080px;
+  min-height: 700px;
+  overflow: hidden;
+}
+
+.main-graph {
+  grid-area: main-graph;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(49,130,206,0.10), 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  min-width: 380px;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.subgraph-panel {
+  grid-area: subgraph-panel;
+  background: #fafdff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(49,130,206,0.10), 0 2px 7px rgba(0,0,0,0.08);
+  min-width: 240px;
+  min-height: 200px;
+  max-width: 460px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 22px 15px 18px 15px;
+}
+
+.orbit-panel {
+  grid-area: orbit-panel;
+  display: flex;
+  flex-direction: row;
+  gap: 38px;
+  background: #f7faff;
+  border-radius: 22px;
+  box-shadow: 0 7px 22px rgba(49,130,206,0.09), 0 2px 7px rgba(0,0,0,0.06);
+  align-items: stretch;
+  min-height: 220px;
+  padding: 24px 42px 20px 42px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.result-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;             /* 占满全屏 */
+  width: 100vw;
+  font-size: 1.5rem;
+  color: #3182ce;            /* 主色调蓝 */
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  background: linear-gradient(135deg, #fafdff 80%, #e3eafe 100%);
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+}

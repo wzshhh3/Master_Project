@@ -1,0 +1,77 @@
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  width: 500px;
+  padding: 32px 24px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.upload-box {
+  border: 2px dashed #2563eb;
+  padding: 30px;
+  margin-top: 16px;
+  background-color: #f9f9ff;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.upload-box input[type="file"] {
+  margin-top: 12px;
+}
+
+.button-row {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.confirm {
+  background-color: #2563eb;
+  color: white;
+}
+
+.cancel {
+  background-color: #aaa;
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.file-info {
+  margin-top: 12px;
+  color: green;
+}
+
+.upload-card {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  width: 500px;
+  padding: 32px 24px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}

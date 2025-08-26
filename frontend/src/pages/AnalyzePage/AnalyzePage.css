@@ -1,0 +1,64 @@
+.analyze-bg {
+  min-height: 100vh;
+  background: repeating-linear-gradient(135deg, #f6f8fa, #f6f8fa 38px, #e4eafd 39px, #e4eafd 40px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 48px;
+}
+.analyze-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(100,130,190,0.10);
+  border: 1.5px solid #a1b6e7;
+  padding: 38px 46px 32px 46px;
+  min-width: 420px;
+  font-size: 16px;
+}
+.analyze-title {
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.analyze-section {
+  margin-bottom: 18px;
+}
+.radio-label, .checkbox-label {
+  margin-right: 24px;
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+.k-input {
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1.2px solid #b1b8e4;
+  padding: 2px 6px;
+  width: 42px;
+  margin-left: 2px;
+}
+.analyze-btn {
+  padding: 6px 18px;
+  font-size: 15px;
+  background: #e5e9fa;
+  color: #243070;
+  border: 1px solid #b2b6d7;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.analyze-btn.main {
+  background: #3366ff;
+  color: #fff;
+  border: none;
+}
+.analyze-btn:disabled {
+  background: #f4f4fa;
+  color: #aaa;
+  cursor: not-allowed;
+}
+.analyze-error {
+  color: #d52222;
+  font-size: 15px;
+  margin-top: 7px;
+}

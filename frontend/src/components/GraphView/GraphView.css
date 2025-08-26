@@ -1,0 +1,34 @@
+/* 外层主卡片区（建议 className="main-graph"） */
+.main-graph {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #fafdff 88%, #e8f1fc 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(49,130,206,0.13), 0 2px 8px rgba(0,0,0,0.10);
+  padding: 18px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  min-width: 360px;
+  min-height: 300px;
+  overflow: hidden;
+  border: 2px solid #e6ecf8;
+  box-sizing: border-box;
+}
+
+/* Cytoscape画布区域（自动占满） */
+.cy {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(49,130,206,0.07);
+}
+
+/* 可选：高亮边框，鼠标悬停时主卡片有微变 */
+.main-graph:hover {
+  box-shadow: 0 12px 40px rgba(49,130,206,0.18), 0 2px 8px rgba(0,0,0,0.12);
+  border-color: #3182ce;
+}
+
+
