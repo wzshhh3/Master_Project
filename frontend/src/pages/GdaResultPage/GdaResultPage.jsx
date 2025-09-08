@@ -1,16 +1,15 @@
-// src/pages/GdaResultPage.jsx
 import React, { useEffect, useState } from "react";
 import CytoscapeComponent from "react-cytoscapejs";
 import "./GdaResultPage.css";
 
 export default function GdaResultPage() {
   const params = new URLSearchParams(window.location.search);
-  const edge_path1 = params.get("edge_path");         // 第一个网络仍沿用 edge_path
+  const edge_path1 = params.get("edge_path");
   const edge_path2 = params.get("edge_path2");
-  const filename1  = params.get("filename")  || "Network 1";
-  const filename2  = params.get("filename2") || "Network 2";
-  const k          = params.get("k");
-  const directed   = params.get("directed");
+  const filename1 = params.get("filename") || "Network 1";
+  const filename2 = params.get("filename2") || "Network 2";
+  const k = params.get("k");
+  const directed = params.get("directed");
   const gtrie_path = params.get("gtrie_path");
 
   const [net1, setNet1] = useState([]);
@@ -20,17 +19,15 @@ export default function GdaResultPage() {
   const [gdaScore, setGdaScore] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // 用于强制 remount Cytoscape
-  const [cyKey1, setCyKey1] = useState(0);
-  const [cyKey2, setCyKey2] = useState(0);
-
   useEffect(() => {
     setLoading(true);
     fetch(
       `http://localhost:8000/api/gda_result?edge_path1=${encodeURIComponent(
-        edge_path1 || ""
-      )}&edge_path2=${encodeURIComponent(edge_path2 || "")}&k=${k}&directed=${directed}&gtrie_path=${encodeURIComponent(
-        gtrie_path || ""
+        edge_path1
+      )}&edge_path2=${encodeURIComponent(
+        edge_path2
+      )}&k=${k}&directed=${directed}&gtrie_path=${encodeURIComponent(
+        gtrie_path
       )}`
     )
       .then((res) => res.json())
@@ -39,7 +36,7 @@ export default function GdaResultPage() {
         setNet2(data.network2?.cyto || []);
         setDgcm1(data.dgcm1 || "");
         setDgcm2(data.dgcm2 || "");
-        setGdaScore(data.gda_score ?? null);
+        setGdaScore(data.gda_score || null);
       })
       .catch(() => {
         setNet1([]);
@@ -50,17 +47,6 @@ export default function GdaResultPage() {
       })
       .finally(() => setLoading(false));
   }, [edge_path1, edge_path2, k, directed, gtrie_path]);
-
-  // elements 变更时，下一帧强制重建 Cytoscape 组件
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setCyKey1((k) => k + 1));
-    return () => cancelAnimationFrame(id);
-  }, [net1.length]);
-
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setCyKey2((k) => k + 1));
-    return () => cancelAnimationFrame(id);
-  }, [net2.length]);
 
   const style = [
     {
@@ -77,8 +63,8 @@ export default function GdaResultPage() {
         width: 38,
         height: 38,
         "text-outline-color": "#fff",
-        "text-outline-width": 2
-      }
+        "text-outline-width": 2,
+      },
     },
     {
       selector: "edge",
@@ -89,9 +75,9 @@ export default function GdaResultPage() {
         "target-arrow-shape": "triangle",
         "target-arrow-color": "#a0b6e6",
         "arrow-scale": 1,
-        opacity: 0.92
-      }
-    }
+        opacity: 0.92,
+      },
+    },
   ];
 
   const downloadImage = (url, filename) => {
@@ -126,20 +112,18 @@ export default function GdaResultPage() {
             <div className="gdaresult-net">
               <div className="gdaresult-netlabel">{filename1}</div>
               <CytoscapeComponent
-                key={cyKey1}                // ← 强制 remount
                 elements={net1}
                 style={{ width: "100%", height: 350, background: "#fafcfe" }}
-                layout={{ name: "cose", animate: false }}  // 稳定：关闭动画
+                layout={{ name: "cose" }}
                 stylesheet={style}
               />
             </div>
             <div className="gdaresult-net">
               <div className="gdaresult-netlabel">{filename2}</div>
               <CytoscapeComponent
-                key={cyKey2}                // ← 强制 remount
                 elements={net2}
                 style={{ width: "100%", height: 350, background: "#fafcfe" }}
-                layout={{ name: "cose", animate: false }}
+                layout={{ name: "cose" }}
                 stylesheet={style}
               />
             </div>
@@ -174,7 +158,7 @@ export default function GdaResultPage() {
         <div className="gdaresult-score">
           <span>GDA Score: </span>
           <span className="gdaresult-scoreval">
-            {gdaScore === null ? "--" : Number(gdaScore).toFixed(4)}
+            {gdaScore === null ? "--" : gdaScore.toFixed(4)}
           </span>
         </div>
         <button className="gdaresult-exportbtn" onClick={handleExport}>
