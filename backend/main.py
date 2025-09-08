@@ -192,65 +192,7 @@ def get_gtlib_filename(k: int, directed: bool, with_orbit: bool) -> str:
     return os.path.join(GTLIB_DIR, f"{prefix}{k}.gt")
 
 
-# --- 已有上传 / 预览 / 生成逻辑（略，保持不变） ---
-# upload_file, preview_info, upload_gtrie, api_generate_gt
-# 请复用你现有的实现，这里略过，仅聚焦新增接口。
 
-
-# @app.get("/api/analyze_from_paths")
-# def analyze_from_paths(
-#     edge_path: str = Query(...), 
-#     gtrie_path: str = Query(...),
-#     k: int       = Query(..., ge=3, le=5),
-#     directed: int= Query(0)
-# ):
-#     """
-#     1) 读取 edge_list，生成 network Cytoscape 元素
-#     2) 调用 enumerate_subgraphs 得到 types + instances
-#     3) 调用 compute_orbits 得到 gddDistribution + heatmapUrl
-#     """
-#     directed_flag = bool(directed)
-#     try:
-#         # 1) network elements
-#         with open(edge_path, encoding="utf-8") as f:
-#             edge_txt = f.read()
-#         info = analyze_edgelist(edge_txt)
-#         # 转成 Cytoscape 格式
-#         nodes = [{"data": {"id": nid, "label": nid}} for nid in info["nodes"]]
-#         edges = [
-#             {"data": {"source": src, "target": tgt}}
-#             for src, tgt in info["edges"]
-#         ]
-#         network = nodes + edges
-
-#         # 2) 子图枚举
-#         subgraphs = enumerate_subgraphs(
-#             edge_list_win=edge_path,
-#             gtrie_win=gtrie_path,
-#             directed=directed_flag,
-#             k=k
-#         )
-
-#         # 3) Orbit / GDD
-#         orbits = compute_orbits(
-#             edge_list_win=edge_path,
-#             gtrie_win=gtrie_path,
-#             directed=directed_flag,
-#             k=k
-#         )
-#         # heatmapFile 返回 basename，前端拼 /outputs/heatmap
-#         if orbits.get("heatmapFile"):
-#             orbits["heatmapUrl"] = f"/outputs/{orbits['heatmapFile']}"
-#         else:
-#             orbits["heatmapUrl"] = ""
-
-#         return {"success": True,
-#                 "network": network,
-#                 "subgraphs": subgraphs,
-#                 "orbits": orbits}
-
-#     except Exception as e:
-#         return JSONResponse({"success": False, "msg": str(e)}, status_code=500)
 
 
 @app.get("/api/export_subgraphs")
@@ -324,7 +266,6 @@ async def analyze_from_paths(
     }
     """
     try:
-        # --------- 1. 读取并解析边列表 ----------
         if not os.path.isfile(edge_path):
             raise HTTPException(404, f"edge_path 文件不存在: {edge_path}")
 
@@ -339,7 +280,6 @@ async def analyze_from_paths(
         for src, tgt in info["edges"]:
             network.append({"data": {"source": src, "target": tgt}})
 
-        # --------- 2. 子图枚举 ----------
         print(directed)
         directed_flag = directed
         ok, subgraphs, err_msg = enumerate_subgraphs(
@@ -348,10 +288,7 @@ async def analyze_from_paths(
             directed=directed_flag,
             k=k
         )
-        # subgraphs = { "types": [ {binary, count}, ... ],
-        #               "instances": [ { instanceId, binary, nodes:[...] }, ... ] }
 
-        # --------- 3. Orbit / GDD 分析 ----------
         ok, orbits_data, err_msg = compute_orbits(
             edge_list_win=edge_path,
             gtrie_win=gtrie_path,
@@ -365,7 +302,7 @@ async def analyze_from_paths(
                 status_code=500
             )
 
-        # orbits_data = {"gddDistribution": ..., "heatmapFile": ...}
+
         heatmap_url = ""
         if orbits_data and orbits_data.get("dgcmFile"):
             heatmap_url = f"/outputs/{orbits_data['dgcmFile']}"
@@ -381,11 +318,9 @@ async def analyze_from_paths(
         }
 
     except HTTPException as he:
-        # 主动抛出的 404 / 400
         return JSONResponse({"success": False, "msg": he.detail}, status_code=he.status_code)
 
     except Exception as e:
-        # 其他未捕获异常
         print("analyze_from_paths 运行错误：", e)
         return JSONResponse(
             {"success": False, "msg": f"服务器内部错误: {e}"},
@@ -405,8 +340,7 @@ async def upload_second_network(file: UploadFile = File(...)):
         save_path = os.path.join(UPLOAD_DIR, save_name)
         with open(save_path, "wb") as f:
             shutil.copyfileobj(file.file, f)
-        # 假设你有解析 node_map 的逻辑，可选
-        node_map = {}  # TODO: 按需解析节点映射
+        node_map = {}
         return {
             "success": True,
             "filename": file.filename,
@@ -436,7 +370,6 @@ async def gda_result(
     if not os.path.exists(gtrie_path):
         raise HTTPException(404, f"文件不存在: {gtrie_path}")
 
-    # 调用 GT-Scanner 分析两个图
     ok1, result1, err1 = compute_orbits(edge_path1, gtrie_path, directed, k)
     if not ok1:
         raise HTTPException(500, f"第一个图计算失败: {err1}")
